@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ project.title }}
+{% endblock title %}
+
+{% block content %}
+    <h1> {{ project.title }} </h1>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>
+                Project Description:
+            </h5>
+            <p>{{ project.description }}</p>
+        <br>
+            <h5>
+                Tech Stack:
+            </h5>
+            <p>{{ project.stack }}</p>
+        </div>
+    </div>
+{% endblock content %}
