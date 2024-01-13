@@ -12,3 +12,5 @@ The website will feature a few different elements:
 * Contact page with all the ways to get in touch with me.
 * Personal Blog
 * Portfolio highlighting some of my favourite projects
+
+> **I will also be using this codebase to demonstrate my programming skills**
