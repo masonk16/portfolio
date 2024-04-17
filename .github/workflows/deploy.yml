@@ -10,7 +10,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - name: Checkout repository
-    uses: actions/checkout@v2
+    uses: actions/checkout@v4
   - name: Run Deployment
     run: |
       ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-54-92-164-66.compute-1.amazonaws.com 'bash -s' < /home/ubuntu/portfolio/deploy.sh
