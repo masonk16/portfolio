@@ -21,3 +21,4 @@ jobs:
      comment: Deploy the master branch
      working-directory: /home/ubuntu/portfolio
      command: /bin/bash ./deploy.sh
+
