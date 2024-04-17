@@ -17,8 +17,8 @@ jobs:
      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
      aws-region: us-east-1
-     instance-ids: ${{ secrets.INSTANCE_ID  }}
-     comment: Deploy the master branch
-     working-directory: /home/ubuntu/portfolio
-     command: /bin/bash ./deploy.sh
-
+     targets: |
+      [{"Key":"InstanceIds","Values":["i-042035378b2f17a70"]}]
+     document-name: AWS-RunShellScript
+     parameters: |
+      {"commands":["/bin/bash ./deploy.sh"], "workingDirectory":["/home/ubuntu/portfolio"]}
