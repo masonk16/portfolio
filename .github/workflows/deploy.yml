@@ -12,13 +12,13 @@ jobs:
   - uses: actions/checkout@v4
 
   - name: AWS SSM Send Command
-    uses: nohmad/aws-ssm-send-command-action@master
+    uses: peterkimzz/aws-ssm-send-command@1.0.4
     with:
      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
      aws-region: us-east-1
-     targets: |
-      [{"Key":"InstanceIds","Values":[secrets.INSTANCE_ID]}]
-     document-name: AWS-RunShellScript
-     parameters: |
-      {"commands": ["cd /home/ubuntu/portfolio", "/bin/bash ./deploy.sh"]}
+     instance-ids: ${{ secrets.INSTANCE_ID  }}
+     comment: Deploy the master branch
+     working-directory: /home/ubuntu/portfolio
+     command: /bin/bash ./deploy.sh
+
