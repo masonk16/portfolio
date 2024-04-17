@@ -1,23 +1,18 @@
-name: Deploy using AWS SSM Send-Command 
+name: Deploy Django to EC2
 
 on:
  push:
-  branches: [main]
+  branches:
+   - main
 
 jobs:
- start:
-  runs-on: ubuntu-latest 
-
+ deploy:
+  runs-on: ubuntu-latest
   steps:
-  - uses: actions/checkout@v2
-
-  - name: AWS SSM Send Command
-    uses: peterkimzz/aws-ssm-send-command@master
-    with:
-     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID  }}
-     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
-     aws-region: us-east-1
-     instance-ids: ${{ secrets.INSTANCE_ID  }}
-     comment: Deploy the master branch
-     working-directory: /home/ubuntu/portfolio
-     command: /bin/bash ./deploy.sh
+  - name: Checkout repository
+    uses: actions/checkout@v2
+  - name: Run Deployment
+    run: |
+      ssh -i ${{ secrets.EC2_SSH_KEY }} ubuntu@ec2-54-92-164-66.compute-1.amazonaws.com 'bash -s' < /home/ubuntu/portfolio/deploy.sh
+    env:
+      ACTIONS_RUNNER_DEBUG: false
