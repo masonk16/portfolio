@@ -4,7 +4,7 @@ source .venv/bin/activate
 sudo pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
-python manage.py collectstatic
+yes | python manage.py collectstatic
 deactivate
 sudo systemctl restart nginx
 sudo systemctl daemon-reload
